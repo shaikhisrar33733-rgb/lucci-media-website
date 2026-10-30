@@ -813,5 +813,31 @@ document.addEventListener('DOMContentLoaded', () => {
     counterEls.forEach(el => counterObserver.observe(el));
   }
 
+  
+  // --- Dedicated Bi-directional Portfolio Cards Scroll Reveal Observer ---
+  const portfolioCardsToReveal = document.querySelectorAll('.portfolio-card');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced && 'IntersectionObserver' in window && portfolioCardsToReveal.length) {
+    const portfolioObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('portfolio-in-view');
+        } else {
+          // Removes class on exit so scrolling back (down or up) triggers reveal again smoothly
+          entry.target.classList.remove('portfolio-in-view');
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
+    });
+
+    portfolioCardsToReveal.forEach(card => portfolioObserver.observe(card));
+  } else {
+    portfolioCardsToReveal.forEach(card => card.classList.add('portfolio-in-view'));
+  }
+
   console.log('LUCCI MEDIA pure static JavaScript engine initialized successfully.');
 });

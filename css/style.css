@@ -347,7 +347,7 @@ body.body-menu-locked {
   animation-play-state: paused;
 }
 
-/* --- Client Logo Infinite Ticker --- */
+/* --- Client Logo Infinite Ticker (Row 1: Right to Left) --- */
 @keyframes logoTickerScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -360,6 +360,22 @@ body.body-menu-locked {
   will-change: transform;
 }
 .logo-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* --- Client Logo Infinite Ticker (Row 2: Left to Right) --- */
+@keyframes logoTickerScrollReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.logo-ticker-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: logoTickerScrollReverse 34s linear infinite;
+  will-change: transform;
+}
+.logo-ticker-track-reverse:hover {
   animation-play-state: paused;
 }
 
@@ -457,3 +473,42 @@ body.body-menu-locked {
   transform: translateY(-3px);
 }
 
+
+
+/* ==========================================================================
+   CURATED PORTFOLIO - BI-DIRECTIONAL SCROLL REVEALS
+   ========================================================================== */
+.portfolio-card {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  will-change: opacity, transform;
+}
+
+.portfolio-card.portfolio-in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.portfolio-card.portfolio-in-view:hover {
+  transform: translateY(-4px) scale(1.005);
+}
+
+/* Staggered delay for cards */
+@media (min-width: 1024px) {
+  .portfolio-card:nth-child(3n+1) { transition-delay: 0.05s; }
+  .portfolio-card:nth-child(3n+2) { transition-delay: 0.16s; }
+  .portfolio-card:nth-child(3n+3) { transition-delay: 0.27s; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .portfolio-card:nth-child(2n+1) { transition-delay: 0.05s; }
+  .portfolio-card:nth-child(2n+2) { transition-delay: 0.18s; }
+}
+
+@media (max-width: 767px) {
+  .portfolio-card { transition-delay: 0.05s; }
+}
