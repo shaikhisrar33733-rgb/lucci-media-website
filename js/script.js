@@ -1,6 +1,6 @@
 /**
  * LUCCI MEDIA - Pure Vanilla JavaScript Engine
- * Handles all navigation, animations, filters, accordion, lightbox, slider & form validation.
+ * Handles navigation, animations, filters, accordion, lightbox, slider, swipe & form validation.
  * Zero external framework dependencies.
  */
 
@@ -11,15 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     const totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
     const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    if (windowHeight > 0) {
+    if (windowHeight > 0 && scrollProgressBar) {
       const percentage = (totalScroll / windowHeight) * 100;
       scrollProgressBar.style.width = percentage + '%';
     }
   }, { passive: true });
 
-  // --- 2. STICKY NAVIGATION BLUR ---
+  // --- 2. STICKY NAVIGATION BLUR & COMPACT ON SCROLL ---
   const header = document.getElementById('site-header');
   window.addEventListener('scroll', () => {
+    if (!header) return;
     if (window.scrollY > 30) {
       header.classList.add('nav-glass', 'py-3.5', 'shadow-sm');
       header.classList.remove('py-5', 'bg-[#FAF8F5]/90');
@@ -29,30 +30,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // --- 3. MOBILE MENU TOGGLE ---
+  // --- 3. MOBILE MENU TOGGLE & BODY LOCK ---
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  const hamburgerIcon = document.getElementById('hamburger-icon');
-  const closeIcon = document.getElementById('close-icon');
 
   function toggleMobileMenu(open) {
+    if (!mobileMenu || !mobileMenuBtn) return;
     const isOpen = open !== undefined ? open : mobileMenu.classList.contains('pointer-events-none');
     if (isOpen) {
       mobileMenu.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
       mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-      hamburgerIcon.classList.add('hidden');
-      closeIcon.classList.remove('hidden');
+      mobileMenuBtn.classList.add('menu-active');
+      document.body.classList.add('body-menu-locked');
       mobileMenuBtn.setAttribute('aria-expanded', 'true');
     } else {
       mobileMenu.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
       mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-      hamburgerIcon.classList.remove('hidden');
-      closeIcon.classList.add('hidden');
+      mobileMenuBtn.classList.remove('menu-active');
+      document.body.classList.remove('body-menu-locked');
       mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
   }
 
-  mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+  }
+
+  // Close mobile drawer when clicking anywhere outside
+  document.addEventListener('click', (e) => {
+    if (mobileMenu && !mobileMenu.classList.contains('pointer-events-none')) {
+      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        toggleMobileMenu(false);
+      }
+    }
+  });
 
   // --- 4. SMOOTH SCROLLING NAVIGATION ---
   function smoothScrollTo(targetSelector, offset = 80) {
@@ -120,30 +131,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const plusIcon = card.querySelector('.service-plus-icon');
     const minusIcon = card.querySelector('.service-minus-icon');
 
-    toggleHeader.addEventListener('click', () => {
-      const isExpanded = !drawer.classList.contains('hidden');
+    if (toggleHeader && drawer) {
+      toggleHeader.addEventListener('click', () => {
+        const isExpanded = !drawer.classList.contains('hidden');
 
-      // Collapse all other services for clean editorial accordions
-      serviceCards.forEach(c => {
-        const d = c.querySelector('.service-drawer');
-        const p = c.querySelector('.service-plus-icon');
-        const m = c.querySelector('.service-minus-icon');
-        d.classList.add('hidden');
-        p.classList.remove('hidden');
-        m.classList.add('hidden');
-        c.classList.remove('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-lg');
-        c.classList.add('bg-[#FAF8F5]', 'border-[#EAE4D9]');
+        // Collapse all other services for clean editorial accordions
+        serviceCards.forEach(c => {
+          const d = c.querySelector('.service-drawer');
+          const p = c.querySelector('.service-plus-icon');
+          const m = c.querySelector('.service-minus-icon');
+          if (d) d.classList.add('hidden');
+          if (p) p.classList.remove('hidden');
+          if (m) m.classList.add('hidden');
+          c.classList.remove('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-lg');
+          c.classList.add('bg-[#FAF8F5]', 'border-[#EAE4D9]');
+        });
+
+        // If it wasn't expanded before, expand this one
+        if (!isExpanded) {
+          drawer.classList.remove('hidden');
+          if (plusIcon) plusIcon.classList.add('hidden');
+          if (minusIcon) minusIcon.classList.remove('hidden');
+          card.classList.add('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-lg');
+          card.classList.remove('bg-[#FAF8F5]', 'border-[#EAE4D9]');
+        }
       });
-
-      // If it wasn't expanded before, expand this one
-      if (!isExpanded) {
-        drawer.classList.remove('hidden');
-        plusIcon.classList.add('hidden');
-        minusIcon.classList.remove('hidden');
-        card.classList.add('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-lg');
-        card.classList.remove('bg-[#FAF8F5]', 'border-[#EAE4D9]');
-      }
-    });
+    }
   });
 
   // Hook for "Inquire about [Service]" buttons
@@ -184,10 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 7. IMAGE LIGHTBOX MODAL ---
+  // --- 7. IMAGE LIGHTBOX MODAL WITH ARROWS & SWIPE ---
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxOverlay = document.getElementById('lightbox-overlay');
   const lightboxCloseBtn = document.getElementById('lightbox-close-btn');
+  const lightboxPrevBtn = document.getElementById('lightbox-prev-btn');
+  const lightboxNextBtn = document.getElementById('lightbox-next-btn');
+  const lightboxCounter = document.getElementById('lightbox-counter');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCategory = document.getElementById('lightbox-category');
   const lightboxClient = document.getElementById('lightbox-client');
@@ -196,76 +212,147 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxDeliverables = document.getElementById('lightbox-deliverables');
   const lightboxInquireBtn = document.getElementById('lightbox-inquire-btn');
 
-  let activeLightboxItem = null;
+  let lightboxItems = [];
+  let currentLightboxIndex = -1;
 
-  function openLightbox(item) {
-    activeLightboxItem = item;
-    lightboxImg.src = item.image;
-    lightboxImg.alt = item.title;
-    lightboxCategory.textContent = item.categoryLabel;
-    lightboxClient.textContent = item.client;
-    lightboxTitle.textContent = item.title;
-    lightboxDescription.textContent = item.description;
-
-    // Deliverables tags
-    lightboxDeliverables.innerHTML = '';
-    if (item.deliverables && item.deliverables.length) {
-      item.deliverables.forEach(d => {
-        const span = document.createElement('span');
-        span.className = 'text-[9px] uppercase tracking-wider text-[#544B44] bg-[#F5F1EA] border border-[#DDD5C7] px-2.5 py-1';
-        span.textContent = d;
-        lightboxDeliverables.appendChild(span);
-      });
-    }
-
-    lightboxModal.classList.remove('opacity-0', 'pointer-events-none');
-    lightboxModal.classList.add('opacity-100', 'pointer-events-auto');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    lightboxModal.classList.add('opacity-0', 'pointer-events-none');
-    lightboxModal.classList.remove('opacity-100', 'pointer-events-auto');
-    document.body.style.overflow = '';
-    activeLightboxItem = null;
-  }
-
-  lightboxOverlay.addEventListener('click', closeLightbox);
-  lightboxCloseBtn.addEventListener('click', closeLightbox);
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !lightboxModal.classList.contains('pointer-events-none')) {
-      closeLightbox();
+  // Initialize lightbox items catalog from DOM
+  const portfolioCardElements = Array.from(document.querySelectorAll('[data-portfolio-item]'));
+  portfolioCardElements.forEach((card, idx) => {
+    try {
+      const item = JSON.parse(card.getAttribute('data-portfolio-item'));
+      item.element = card;
+      lightboxItems.push(item);
+      card.setAttribute('data-lightbox-index', idx);
+    } catch (err) {
+      console.error('Error parsing item data:', err);
     }
   });
 
-  // Click handler on portfolio & bts cards
-  document.querySelectorAll('[data-portfolio-item]').forEach(card => {
-    card.addEventListener('click', () => {
-      const jsonStr = card.getAttribute('data-portfolio-item');
-      if (jsonStr) {
-        try {
-          const item = JSON.parse(jsonStr);
-          openLightbox(item);
-        } catch (err) {
-          console.error('Error parsing item data:', err);
+  function openLightboxByIndex(index) {
+    if (!lightboxItems.length) return;
+    if (index < 0) index = lightboxItems.length - 1;
+    if (index >= lightboxItems.length) index = 0;
+    currentLightboxIndex = index;
+    const item = lightboxItems[index];
+
+    // Smooth image reveal
+    if (lightboxImg) {
+      lightboxImg.style.opacity = '0';
+      setTimeout(() => {
+        lightboxImg.src = item.image;
+        lightboxImg.alt = item.title;
+        lightboxImg.style.opacity = '1';
+      }, 80);
+    }
+
+    if (lightboxCategory) lightboxCategory.textContent = item.categoryLabel || '';
+    if (lightboxClient) lightboxClient.textContent = item.client || '';
+    if (lightboxTitle) lightboxTitle.textContent = item.title || '';
+    if (lightboxDescription) lightboxDescription.textContent = item.description || '';
+
+    if (lightboxCounter) {
+      const cur = String(currentLightboxIndex + 1).padStart(2, '0');
+      const tot = String(lightboxItems.length).padStart(2, '0');
+      lightboxCounter.textContent = `${cur} / ${tot}`;
+    }
+
+    // Deliverables tags
+    if (lightboxDeliverables) {
+      lightboxDeliverables.innerHTML = '';
+      if (item.deliverables && item.deliverables.length) {
+        item.deliverables.forEach(d => {
+          const span = document.createElement('span');
+          span.className = 'text-[9px] uppercase tracking-wider text-[#544B44] bg-[#F5F1EA] border border-[#DDD5C7] px-2.5 py-1';
+          span.textContent = d;
+          lightboxDeliverables.appendChild(span);
+        });
+      }
+    }
+
+    if (lightboxModal) {
+      lightboxModal.classList.remove('opacity-0', 'pointer-events-none');
+      lightboxModal.classList.add('opacity-100', 'pointer-events-auto');
+    }
+    document.body.classList.add('body-menu-locked');
+  }
+
+  function nextLightbox() {
+    openLightboxByIndex(currentLightboxIndex + 1);
+  }
+
+  function prevLightbox() {
+    openLightboxByIndex(currentLightboxIndex - 1);
+  }
+
+  function closeLightbox() {
+    if (lightboxModal) {
+      lightboxModal.classList.add('opacity-0', 'pointer-events-none');
+      lightboxModal.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+    document.body.classList.remove('body-menu-locked');
+    currentLightboxIndex = -1;
+  }
+
+  if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+  if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+  if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevLightbox(); });
+  if (lightboxNextBtn) lightboxNextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextLightbox(); });
+
+  // Lightbox Keyboard Navigation (Escape, Left, Right)
+  document.addEventListener('keydown', (e) => {
+    if (!lightboxModal || lightboxModal.classList.contains('pointer-events-none')) return;
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (e.key === 'ArrowRight') {
+      nextLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      prevLightbox();
+    }
+  });
+
+  // Lightbox Touch Swipe
+  let lbTouchStartX = 0;
+  let lbTouchEndX = 0;
+  if (lightboxModal) {
+    lightboxModal.addEventListener('touchstart', (e) => {
+      lbTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightboxModal.addEventListener('touchend', (e) => {
+      lbTouchEndX = e.changedTouches[0].screenX;
+      const diff = lbTouchEndX - lbTouchStartX;
+      if (Math.abs(diff) > 45) {
+        if (diff < 0) {
+          nextLightbox(); // swiped left -> next
+        } else {
+          prevLightbox(); // swiped right -> prev
         }
+      }
+    }, { passive: true });
+  }
+
+  // Click handler on portfolio & bts cards
+  portfolioCardElements.forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = parseInt(card.getAttribute('data-lightbox-index'), 10);
+      if (!isNaN(idx)) {
+        openLightboxByIndex(idx);
       }
     });
   });
 
-  lightboxInquireBtn.addEventListener('click', () => {
-    if (activeLightboxItem) {
+  if (lightboxInquireBtn) {
+    lightboxInquireBtn.addEventListener('click', () => {
       const serviceSelect = document.getElementById('contact-service');
       if (serviceSelect) {
         serviceSelect.value = 'Custom Multi-Service Scope';
       }
       closeLightbox();
       smoothScrollTo('#contact');
-    }
-  });
+    });
+  }
 
-  // --- 8. TESTIMONIALS SLIDER & GRID TOGGLE ---
+  // --- 8. TESTIMONIALS SLIDER & MOBILE TOUCH SWIPE ---
   const testimonials = [
     {
       highlight: "I booked 30 new clients in the matter of 2 weeks.",
@@ -283,14 +370,14 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       highlight: "Lexi is a game-changer for anyone looking to take their business to the next level.",
-      quote: "I’ve had the absolute pleasure of working with Lexi and Lucci Media on several occasions for content creation days and business branding photo shoots, and every experience has been nothing short of amazing. Lexi has an incredible eye for aesthetics and such a natural talent for capturing the essence of a brand. The photos and content she created were not only visually stunning but also perfectly aligned with my brand’s aesthetic. Beyond her creative skills, Lexi is organized, patient, and full of fresh ideas.",
+      quote: "I've had the absolute pleasure of working with Lexi and Lucci Media on several occasions for content creation days and business branding photo shoots, and every experience has been nothing short of amazing. Lexi has an incredible eye for aesthetics and such a natural talent for capturing the essence of a brand. The photos and content she created were not only visually stunning but also perfectly aligned with my brand's aesthetic. Beyond her creative skills, Lexi is organized, patient, and full of fresh ideas.",
       author: "Matthew",
       business: "Matthew James Skin Spa",
       serviceMentioned: "Content Days & Branding Shoots"
     },
     {
-      highlight: "I’m on my third project with Lucci Media, and the consistency speaks for itself!",
-      quote: "She is the best!! She captures the right angles, picks the best tone, creates amazing reels, and the best part is she’s efficient and gets things done! She’s also such a sweet soul and a hard-working mama. I am so excited for our future projects together.",
+      highlight: "I'm on my third project with Lucci Media, and the consistency speaks for itself!",
+      quote: "She is the best!! She captures the right angles, picks the best tone, creates amazing reels, and the best part is she's efficient and gets things done! She's also such a sweet soul and a hard-working mama. I am so excited for our future projects together.",
       author: "Andrea",
       business: "Serenity Beauty Boston",
       serviceMentioned: "Trending Socials & Ongoing Content"
@@ -303,15 +390,15 @@ document.addEventListener('DOMContentLoaded', () => {
       serviceMentioned: "Full Brand Suite, Shoot & Website"
     },
     {
-      highlight: "Obsessed is an understatement... the Lucci Media high-end touch that they’re known for.",
-      quote: "As a fellow female business owner who prioritizes the client experience, it goes a long way when I’m on the receiving end. After experiencing an exploration call and a CEO Mini shoot with incredible final edits, I decided to bring her on for a year’s worth of content. It still feels like my voice—just with the Lucci Media high-end touch that they're known for. Love me some Lex and Lucci Media!",
+      highlight: "Obsessed is an understatement... the Lucci Media high-end touch that they're known for.",
+      quote: "As a fellow female business owner who prioritizes the client experience, it goes a long way when I'm on the receiving end. After experiencing an exploration call and a CEO Mini shoot with incredible final edits, I decided to bring her on for a year's worth of content. It still feels like my voice—just with the Lucci Media high-end touch that they're known for. Love me some Lex and Lucci Media!",
       author: "Alyssa",
       business: "Dosed RX",
       serviceMentioned: "Inner Circle Annual Content & Shoots"
     },
     {
       highlight: "She captured 700+ pictures and gave me a lifetime of images for my business.",
-      quote: "I can’t say enough great things about Lex and the process of my brand photoshoot. From her gentle manner through messages to the awesome energy in person behind the camera. Not only did she help with posing and angles, but she made me feel so much more confident. I wanted to captivate this new era for myself and she exceeded all expectations.",
+      quote: "I can't say enough great things about Lex and the process of my brand photoshoot. From her gentle manner through messages to the awesome energy in person behind the camera. Not only did she help with posing and angles, but she made me feel so much more confident. I wanted to captivate this new era for myself and she exceeded all expectations.",
       author: "Raschel",
       business: "R Method",
       serviceMentioned: "Brand Photography & Direction"
@@ -331,8 +418,8 @@ document.addEventListener('DOMContentLoaded', () => {
       serviceMentioned: "Social Media Management"
     },
     {
-      highlight: "Lex’s passion to stand out and provide high attention to detail is unmatched.",
-      quote: "Lucci Media brought my vision to life during my CEO mini shoot. I am so happy with the energy and quality of work with this team. Lex’s passion to stand out and provide high attention to detail to our projects is what will keep me on board for all my social media needs!",
+      highlight: "Lex's passion to stand out and provide high attention to detail is unmatched.",
+      quote: "Lucci Media brought my vision to life during my CEO mini shoot. I am so happy with the energy and quality of work with this team. Lex's passion to stand out and provide high attention to detail to our projects is what will keep me on board for all my social media needs!",
       author: "Shaneice",
       business: "Recovery Room",
       serviceMentioned: "CEO Mini Shoot & Social Content"
@@ -349,35 +436,53 @@ document.addEventListener('DOMContentLoaded', () => {
   const tDots = document.querySelectorAll('[data-testimonial-dot]');
   const tPrevBtn = document.getElementById('t-prev-btn');
   const tNextBtn = document.getElementById('t-next-btn');
+  const tCardInner = document.querySelector('.testimonial-card-inner');
 
   function renderTestimonial(idx) {
     currentTestimonialIndex = idx;
     const t = testimonials[idx];
-    tHighlight.innerHTML = `&ldquo;${t.highlight}&rdquo;`;
-    tQuote.textContent = t.quote;
-    tAuthor.textContent = t.author;
-    tBusiness.textContent = t.business;
-    tService.textContent = `Service: ${t.serviceMentioned}`;
-    tCounter.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(testimonials.length).padStart(2, '0')}`;
 
-    tDots.forEach((d, i) => {
-      if (i === idx) {
-        d.className = 'h-1.5 transition-all duration-300 w-8 bg-[#1E1A17]';
-      } else {
-        d.className = 'h-1.5 transition-all duration-300 w-2 bg-[#DDD5C7] hover:bg-[#A99B87]';
+    if (tCardInner) {
+      tCardInner.style.opacity = '0';
+      tCardInner.style.transform = 'translateY(6px)';
+    }
+
+    setTimeout(() => {
+      if (tHighlight) tHighlight.innerHTML = `&ldquo;${t.highlight}&rdquo;`;
+      if (tQuote) tQuote.textContent = t.quote;
+      if (tAuthor) tAuthor.textContent = t.author;
+      if (tBusiness) tBusiness.textContent = t.business;
+      if (tService) tService.textContent = `Service: ${t.serviceMentioned}`;
+      if (tCounter) tCounter.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(testimonials.length).padStart(2, '0')}`;
+
+      tDots.forEach((d, i) => {
+        if (i === idx) {
+          d.className = 'h-1.5 transition-all duration-300 w-8 bg-[#1E1A17]';
+        } else {
+          d.className = 'h-1.5 transition-all duration-300 w-2 bg-[#DDD5C7] hover:bg-[#A99B87]';
+        }
+      });
+
+      if (tCardInner) {
+        tCardInner.style.opacity = '1';
+        tCardInner.style.transform = 'translateY(0)';
       }
+    }, 120);
+  }
+
+  if (tPrevBtn) {
+    tPrevBtn.addEventListener('click', () => {
+      const nextIdx = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
+      renderTestimonial(nextIdx);
     });
   }
 
-  tPrevBtn.addEventListener('click', () => {
-    const nextIdx = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
-    renderTestimonial(nextIdx);
-  });
-
-  tNextBtn.addEventListener('click', () => {
-    const nextIdx = (currentTestimonialIndex + 1) % testimonials.length;
-    renderTestimonial(nextIdx);
-  });
+  if (tNextBtn) {
+    tNextBtn.addEventListener('click', () => {
+      const nextIdx = (currentTestimonialIndex + 1) % testimonials.length;
+      renderTestimonial(nextIdx);
+    });
+  }
 
   tDots.forEach(dot => {
     dot.addEventListener('click', () => {
@@ -386,24 +491,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Testimonials Mobile Touch Swipe
+  const sliderView = document.getElementById('testimonials-slider-view');
+  let tTouchStartX = 0;
+  let tTouchEndX = 0;
+  if (sliderView) {
+    sliderView.addEventListener('touchstart', (e) => {
+      tTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    sliderView.addEventListener('touchend', (e) => {
+      tTouchEndX = e.changedTouches[0].screenX;
+      const diff = tTouchEndX - tTouchStartX;
+      if (Math.abs(diff) > 40) {
+        if (diff < 0) {
+          const nextIdx = (currentTestimonialIndex + 1) % testimonials.length;
+          renderTestimonial(nextIdx);
+        } else {
+          const nextIdx = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
+          renderTestimonial(nextIdx);
+        }
+      }
+    }, { passive: true });
+  }
+
   // Toggle Slider vs Grid View
   const toggleViewBtn = document.getElementById('toggle-testimonials-view');
-  const sliderView = document.getElementById('testimonials-slider-view');
   const gridView = document.getElementById('testimonials-grid-view');
   const viewText = document.getElementById('view-text');
 
-  toggleViewBtn.addEventListener('click', () => {
-    const isShowingGrid = !gridView.classList.contains('hidden');
-    if (isShowingGrid) {
-      gridView.classList.add('hidden');
-      sliderView.classList.remove('hidden');
-      viewText.textContent = 'READ ALL 10 TESTIMONIALS';
-    } else {
-      sliderView.classList.add('hidden');
-      gridView.classList.remove('hidden');
-      viewText.textContent = 'SLIDESHOW VIEW';
-    }
-  });
+  if (toggleViewBtn && gridView && sliderView) {
+    toggleViewBtn.addEventListener('click', () => {
+      const isShowingGrid = !gridView.classList.contains('hidden');
+      if (isShowingGrid) {
+        gridView.classList.add('hidden');
+        sliderView.classList.remove('hidden');
+        if (viewText) viewText.textContent = 'READ ALL 10 TESTIMONIALS';
+      } else {
+        sliderView.classList.add('hidden');
+        gridView.classList.remove('hidden');
+        if (viewText) viewText.textContent = 'SLIDESHOW VIEW';
+      }
+    });
+  }
 
   // --- 9. FAQ ACCORDION & CATEGORY FILTERING ---
   const faqFilterBtns = document.querySelectorAll('.faq-filter-btn');
@@ -437,29 +567,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const plusIcon = card.querySelector('.faq-plus-icon');
     const minusIcon = card.querySelector('.faq-minus-icon');
 
-    qBtn.addEventListener('click', () => {
-      const isOpen = !answerPanel.classList.contains('hidden');
+    if (qBtn && answerPanel) {
+      qBtn.addEventListener('click', () => {
+        const isOpen = !answerPanel.classList.contains('hidden');
 
-      // Collapse other FAQs
-      faqCards.forEach(c => {
-        const a = c.querySelector('.faq-answer-panel');
-        const p = c.querySelector('.faq-plus-icon');
-        const m = c.querySelector('.faq-minus-icon');
-        a.classList.add('hidden');
-        p.classList.remove('hidden');
-        m.classList.add('hidden');
-        c.classList.remove('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-sm');
-        c.classList.add('bg-[#FAF8F5]', 'border-[#EAE4D9]');
+        // Collapse other FAQs
+        faqCards.forEach(c => {
+          const a = c.querySelector('.faq-answer-panel');
+          const p = c.querySelector('.faq-plus-icon');
+          const m = c.querySelector('.faq-minus-icon');
+          if (a) a.classList.add('hidden');
+          if (p) p.classList.remove('hidden');
+          if (m) m.classList.add('hidden');
+          c.classList.remove('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-sm', 'is-expanded');
+          c.classList.add('bg-[#FAF8F5]', 'border-[#EAE4D9]');
+        });
+
+        if (!isOpen) {
+          answerPanel.classList.remove('hidden');
+          if (plusIcon) plusIcon.classList.add('hidden');
+          if (minusIcon) minusIcon.classList.remove('hidden');
+          card.classList.add('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-sm', 'is-expanded');
+          card.classList.remove('bg-[#FAF8F5]', 'border-[#EAE4D9]');
+        }
       });
-
-      if (!isOpen) {
-        answerPanel.classList.remove('hidden');
-        plusIcon.classList.add('hidden');
-        minusIcon.classList.remove('hidden');
-        card.classList.add('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-sm');
-        card.classList.remove('bg-[#FAF8F5]', 'border-[#EAE4D9]');
-      }
-    });
+    }
   });
 
   // --- 10. CONTACT FORM VALIDATION & SUBMISSION ---
@@ -481,40 +613,67 @@ document.addEventListener('DOMContentLoaded', () => {
       const businessInput = document.getElementById('contact-business');
       const detailsInput = document.getElementById('contact-details');
 
-      const name = nameInput.value.trim();
-      const email = emailInput.value.trim();
-      const business = businessInput.value.trim();
-      const details = detailsInput.value.trim();
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const business = businessInput ? businessInput.value.trim() : '';
+      const details = detailsInput ? detailsInput.value.trim() : '';
 
       if (!name || !email || !details) {
-        contactError.textContent = 'Please fill in your name, email, and project details.';
-        contactError.classList.remove('hidden');
+        if (contactError) {
+          contactError.textContent = 'Please fill in your name, email, and project details.';
+          contactError.classList.remove('hidden');
+        }
         return;
       }
 
-      contactError.classList.add('hidden');
-      submitBtnText.textContent = 'PROCESSING APPLICATION...';
-      submitBtn.disabled = true;
+      if (contactError) contactError.classList.add('hidden');
+      if (submitBtnText) submitBtnText.textContent = 'PROCESSING APPLICATION...';
+      if (submitBtn) submitBtn.disabled = true;
 
       setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtnText.textContent = 'SUBMIT APPLICATION';
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitBtnText) submitBtnText.textContent = 'SUBMIT APPLICATION';
 
-        successClientName.textContent = `Thank you, ${name}.`;
-        successClientDesc.textContent = `We have received your project details for ${business || 'your business'}. Lex will review your aesthetic goals and reach out directly within 24-48 hours.`;
+        if (successClientName) successClientName.textContent = `Thank you, ${name}.`;
+        if (successClientDesc) successClientDesc.textContent = `We have received your project details for ${business || 'your business'}. Lex will review your aesthetic goals and reach out directly within 24-48 hours.`;
 
         contactForm.classList.add('hidden');
-        contactSuccess.classList.remove('hidden');
+        if (contactSuccess) contactSuccess.classList.remove('hidden');
       }, 700);
     });
 
-    resetContactBtn.addEventListener('click', () => {
-      contactForm.reset();
-      contactSuccess.classList.add('hidden');
-      contactForm.classList.remove('hidden');
-    });
+    if (resetContactBtn) {
+      resetContactBtn.addEventListener('click', () => {
+        contactForm.reset();
+        if (contactSuccess) contactSuccess.classList.add('hidden');
+        contactForm.classList.remove('hidden');
+      });
+    }
   }
 
-  console.log('LUCCI MEDIA pure static JavaScript engine initialized.');
-});
+  // --- 11. SCROLL REVEAL OBSERVER ---
+  const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-fade, .reveal-scale');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Immediate reveal if reduced motion or IntersectionObserver is unsupported
+    revealElements.forEach(el => el.classList.add('is-revealed'));
+  }
+
+  console.log('LUCCI MEDIA pure static JavaScript engine initialized successfully.');
+});
