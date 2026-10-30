@@ -2927,6 +2927,7 @@ body.body-menu-locked {
 .logo-ticker-track-reverse {
   margin-top: 1rem;
 }
+
 @media (min-width: 640px) {
   .logo-ticker-track-reverse {
     margin-top: 1.5rem;

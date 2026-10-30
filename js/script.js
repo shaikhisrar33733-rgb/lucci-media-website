@@ -680,7 +680,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => el.classList.add('is-revealed'));
   }
 
-  
+
   // --- 12. BRANDED PRELOADER ANIMATION (POPULAR TASKS & THUMBSTOP) ---
   const siteLoader = document.getElementById('site-loader');
   const loaderBar = document.getElementById('loader-progress-bar');
@@ -813,7 +813,7 @@ document.addEventListener('DOMContentLoaded', () => {
     counterEls.forEach(el => counterObserver.observe(el));
   }
 
-  
+
   // --- Dedicated Bi-directional Portfolio Cards Scroll Reveal Observer ---
   const portfolioCardsToReveal = document.querySelectorAll('.portfolio-card');
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
