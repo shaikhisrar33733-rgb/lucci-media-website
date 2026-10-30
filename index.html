@@ -25,6 +25,26 @@
 </head>
 <body class="bg-[#FAF8F5] text-[#1E1A17] font-sans antialiased selection:bg-[#EAE4D9] overflow-x-hidden w-full max-w-full">
 
+  <!-- BRANDED PRELOADER (POPULAR TASKS & THUMBSTOP STYLE) -->
+  <div id="site-loader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1E1A17] text-[#FAF8F5]">
+    <div class="flex flex-col items-center space-y-6 max-w-xs text-center px-6">
+      <div class="loader-logo-wrap relative">
+        <img src="assets/images/lucci-client-logo-light.png" alt="LUCCI MEDIA" class="h-8 sm:h-10 w-auto object-contain animate-pulse" />
+      </div>
+      <div class="w-48 h-[1.5px] bg-[#3D3631] relative overflow-hidden rounded-full">
+        <div id="loader-progress-bar" class="absolute left-0 top-0 bottom-0 bg-[#9E8063] w-0 transition-all duration-150 ease-out"></div>
+      </div>
+      <div class="flex items-center justify-between w-48 text-[10px] tracking-[0.25em] text-[#A99B87] font-light">
+        <span>INITIALIZING</span>
+        <span id="loader-counter">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor Accent (Desktop Only) -->
+  <div id="custom-cursor" aria-hidden="true"></div>
+  <div id="custom-cursor-dot" aria-hidden="true"></div>
+
   <!-- Reading Progress Bar -->
   <div id="scroll-progress" class="fixed top-0 left-0 h-[2.5px] bg-[#9E8063] z-50 transition-all duration-150 pointer-events-none" style="width: 0%;"></div>
 
@@ -103,10 +123,14 @@
             </span>
           </div>
 
-          <h1 class="hero-reveal-2 hero-headline font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.15] text-[#1E1A17] font-light tracking-tight">
-            Building brands that <br class="hidden sm:inline" />
-            <span class="italic font-normal font-serif text-[#7D644B]">attract</span> and
-            <span class="italic font-normal font-serif text-[#7D644B]">convert.</span>
+          <h1 class="hero-headline font-serif text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.12] text-[#1E1A17] font-light tracking-tight">
+            <span class="inline-block overflow-hidden"><span class="hero-word hero-word-1">Building</span></span>
+            <span class="inline-block overflow-hidden"><span class="hero-word hero-word-2">brands</span></span>
+            <span class="inline-block overflow-hidden"><span class="hero-word hero-word-3">that</span></span>
+            <br class="hidden sm:inline" />
+            <span class="inline-block overflow-hidden"><span class="hero-word hero-word-4 italic font-serif text-[#7D644B]">attract</span></span>
+            <span class="inline-block overflow-hidden"><span class="hero-word hero-word-5">and</span></span>
+            <span class="inline-block overflow-hidden"><span class="hero-word hero-word-6 italic font-serif text-[#7D644B]">convert.</span></span>
           </h1>
 
           <p class="hero-reveal-3 text-base sm:text-lg text-[#544B44] max-w-xl font-light leading-relaxed">
@@ -114,24 +138,24 @@
           </p>
 
           <div class="hero-reveal-4 pt-2 flex flex-col sm:flex-row items-stretch sm:items-center space-y-3.5 sm:space-y-0 sm:space-x-5">
-            <a href="#contact" class="btn-luxury group inline-flex items-center justify-center space-x-2 px-8 py-3.5 text-[11px] uppercase tracking-[0.22em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all duration-300 shadow-sm">
-              <span>INQUIRE WITH US</span>
+            <a href="#contact" class="btn-luxury btn-magnetic group inline-flex items-center justify-center space-x-2 px-8 py-3.5 text-[11px] uppercase tracking-[0.22em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all duration-300 shadow-sm">
+              <span>LET'S WORK TOGETHER</span>
               <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
             </a>
-            <a href="#services" class="group inline-flex items-center justify-center space-x-2 px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] font-light text-[#544B44] hover:text-[#1E1A17] transition-colors">
-              <span>VIEW SERVICES</span>
+            <a href="#portfolio" class="btn-magnetic group inline-flex items-center justify-center space-x-2 px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] font-light text-[#544B44] hover:text-[#1E1A17] transition-colors">
+              <span>EXPLORE OUR WORK</span>
               <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-y-0.5 text-[#9E8063]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
             </a>
           </div>
 
           <div class="hero-reveal-5 pt-6 border-t border-[#EAE4D9]/80 flex flex-wrap items-center gap-4 sm:gap-6 text-[#756A61] text-xs font-light">
             <div class="flex items-center space-x-2">
-              <span class="font-serif text-lg text-[#1E1A17] font-light">250+</span>
+              <span class="font-serif text-lg text-[#1E1A17] font-light" data-counter-target="250">250+</span>
               <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-[#544B44]">BRANDS ELEVATED</span>
             </div>
             <span class="text-[#C7BCAB] hidden sm:inline">|</span>
             <div class="flex items-center space-x-2">
-              <span class="font-serif text-lg text-[#1E1A17] font-light">10+</span>
+              <span class="font-serif text-lg text-[#1E1A17] font-light" data-counter-target="10">10+</span>
               <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-[#544B44]">YEARS INDUSTRY EXPERTISE</span>
             </div>
             <span class="text-[#C7BCAB] hidden md:inline">|</span>
@@ -141,35 +165,52 @@
           </div>
         </div>
 
-        <!-- Right Column: Visual Frame -->
-        <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+                <!-- Right Column: Animated Visual & Video Wall (Thumbstop Inspired) -->
+        <div class="lg:col-span-5 relative mt-6 lg:mt-0 hero-visual-container">
           <div class="relative mx-auto max-w-md lg:max-w-none">
-            <div class="relative z-10 overflow-hidden bg-[#EAE4D9] shadow-xl border border-[#FAF8F5]/80 aspect-[4/5]">
+            
+            <!-- Card 1: Main Campaign Frame with Reel Badge -->
+            <div class="relative z-10 overflow-hidden bg-[#EAE4D9] shadow-2xl border border-[#FAF8F5]/80 aspect-[4/5] parallax-layer" data-parallax="0.03">
               <img src="assets/images/hero-campaign.webp" alt="Lucci Media Beauty &amp; Lifestyle Editorial Campaign" class="w-full h-full object-cover editorial-img-zoom" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/40 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute bottom-4 left-4 right-4 text-[#FAF8F5] flex justify-between items-end">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1E1A17]/60 via-transparent to-transparent pointer-events-none"></div>
+              
+              <!-- Reel Play Badge (Thumbstop Style) -->
+              <div class="absolute top-4 right-4 z-20 flex items-center space-x-2 bg-[#1E1A17]/85 backdrop-blur-md px-3 py-1.5 border border-[#EAE4D9]/20 text-[#FAF8F5]">
+                <span class="w-2 h-2 rounded-full bg-[#E58A4E] animate-pulse"></span>
+                <span class="text-[9px] uppercase tracking-[0.2em] font-light">REEL CAMPAIGN</span>
+              </div>
+
+              <div class="absolute bottom-5 left-5 right-5 text-[#FAF8F5] flex justify-between items-end">
                 <div>
                   <span class="block text-[9px] uppercase tracking-[0.25em] text-[#EAE4D9] font-light">CREATIVE DIRECTION</span>
-                  <span class="font-serif text-lg italic font-light tracking-wide">Art Directed Visuals</span>
+                  <span class="font-serif text-xl italic font-light tracking-wide">Art Directed Visuals</span>
                 </div>
                 <span class="text-[10px] tracking-[0.2em] uppercase text-[#EAE4D9]/80">VOL. 26</span>
               </div>
             </div>
 
-            <!-- Overlapping Polaroid Frame -->
-            <div class="animate-float hidden sm:block absolute -bottom-8 -left-10 z-20 w-48 sm:w-56 aspect-[3/4] overflow-hidden bg-[#FAF8F5] p-2 shadow-2xl border border-[#EAE4D9]">
+            <!-- Card 2: Overlapping Floating Polaroid (Founder on Set) -->
+            <div class="animate-float hidden sm:block absolute -bottom-8 -left-10 z-20 w-48 sm:w-56 aspect-[3/4] overflow-hidden bg-[#FAF8F5] p-2 shadow-2xl border border-[#EAE4D9] -rotate-3 hover:rotate-0 transition-transform duration-500 parallax-layer" data-parallax="-0.05">
               <img src="assets/images/founder-lex.webp" alt="Lex Luciano, Founder &amp; Creative Director" class="w-full h-full object-cover" />
               <div class="absolute top-4 left-4 bg-[#FAF8F5]/90 px-2.5 py-1 text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold backdrop-blur-sm">
                 FOUNDER LED
               </div>
+              <div class="absolute bottom-3 left-3 right-3 text-center bg-[#FAF8F5]/95 py-1 border-t border-[#EAE4D9]/60">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#756A61] font-light">LEX LUCIANO · ON SET</span>
+              </div>
             </div>
 
-            <!-- Floating Client Proof Badge -->
-            <div class="absolute -top-3 right-2 sm:-top-5 sm:-right-5 z-20 bg-[#FAF8F5] border border-[#DDD5C7] px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-lg max-w-[160px] sm:max-w-[200px]">
-              <p class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-[#9E8063] font-semibold">CLIENT RESULT</p>
-              <p class="text-[11px] sm:text-xs text-[#2A2521] font-light leading-snug mt-1">&ldquo;Booked 30 new clients in the matter of 2 weeks.&rdquo;</p>
-              <p class="text-[8px] sm:text-[9px] text-[#756A61] mt-1 italic">— Kat Beauty Co</p>
+            <!-- Card 3: Floating Video Archive Badge (Thumbstop Style) -->
+            <div class="animate-float-delayed absolute -top-5 -right-5 z-20 bg-[#FAF8F5] p-3.5 shadow-xl border border-[#EAE4D9] flex items-center space-x-3.5 max-w-[210px] parallax-layer" data-parallax="0.06">
+              <div class="w-10 h-10 rounded-full bg-[#1E1A17] text-[#9E8063] flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div>
+                <span class="block text-[8px] uppercase tracking-[0.25em] text-[#9E8063] font-semibold">REEL ARCHIVE</span>
+                <span class="text-[10px] uppercase tracking-[0.14em] text-[#1E1A17] font-medium leading-tight block">98.4% RETENTION RATE</span>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -180,6 +221,40 @@
         <div class="scroll-indicator-line"></div>
       </div>
     </section>
+
+    <!-- MOVING TEXT RIBBON (THUMBSTOP STYLE) -->
+    <div class="py-4 bg-[#1E1A17] text-[#FAF8F5] overflow-hidden whitespace-nowrap border-y border-[#3D3631] select-none" aria-label="Capabilities Marquee">
+      <div class="inline-flex marquee-track">
+        <div class="flex items-center space-x-8 text-[10px] sm:text-[11px] tracking-[0.25em] uppercase font-light px-4">
+          <span>CREATIVE DIRECTION</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>SOCIAL STRATEGY</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>BRAND IDENTITY</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>EDITORIAL CONTENT</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>CAMPAIGN PRODUCTION</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>CONTENT SCALING</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+        </div>
+        <div class="flex items-center space-x-8 text-[10px] sm:text-[11px] tracking-[0.25em] uppercase font-light px-4" aria-hidden="true">
+          <span>CREATIVE DIRECTION</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>SOCIAL STRATEGY</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>BRAND IDENTITY</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>EDITORIAL CONTENT</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>CAMPAIGN PRODUCTION</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+          <span>CONTENT SCALING</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#9E8063]"></span>
+        </div>
+      </div>
+    </div>
 
     <!-- SECTION 3: BRAND INTRODUCTION & CLIENT LOGOS -->
     <section id="about" class="py-24 bg-[#F5F1EA] border-y border-[#EAE4D9]">
@@ -262,45 +337,90 @@
           </div>
         </div>
 
-        <!-- Logos We Have Created -->
-        <div class="pt-12 border-t border-[#EAE4D9] space-y-6">
+        <!-- Logos We Have Created (Horizontal Infinite Ticker - Section 8) -->
+        <div class="pt-12 border-t border-[#EAE4D9] space-y-6 overflow-hidden">
           <div class="text-center space-y-1">
             <p class="text-[11px] uppercase tracking-[0.25em] font-semibold text-[#756A61]">LOGOS &AMP; BRAND IDENTITIES WE HAVE CREATED</p>
             <p class="text-xs text-[#A99B87] font-light">Trusted by 250+ discerning brands across beauty, aesthetics and lifestyle</p>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6 items-center justify-items-center pt-4">
-            <div class="group w-full flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
-              <img src="assets/images/clients/brown-sugar-skin-logo.png" alt="Brown Sugar Skin" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
-              <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">Brown Sugar Skin</span>
-            </div>
-            <div class="group w-full flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
-              <img src="assets/images/clients/the-sculpted-spa-logo.png" alt="The Sculpted Spa" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
-              <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">The Sculpted Spa</span>
-            </div>
-            <div class="group w-full flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
-              <img src="assets/images/clients/kay-skn-logo.png" alt="Kay Skn" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
-              <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">Kay Skn</span>
-            </div>
-            <div class="group w-full flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
-              <img src="assets/images/clients/sbs-logo.png" alt="SBS Beauty" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
-              <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">SBS Beauty</span>
-            </div>
-            <div class="group w-full flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
-              <img src="assets/images/clients/beyond-beauty-logo.png" alt="Beyond Beauty" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
-              <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">Beyond Beauty</span>
-            </div>
-            <div class="group w-full flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
-              <img src="assets/images/clients/laser-and-spa-logo.png" alt="Laser & Spa" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
-              <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">Laser & Spa</span>
-            </div>
-            <div class="group w-full flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
-              <img src="assets/images/clients/r-method-logo.png" alt="R Method" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
-              <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">R Method</span>
-            </div>
-            <div class="group w-full flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
-              <img src="assets/images/clients/solydified-logo.png" alt="Solydified" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
-              <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">Solydified</span>
+          <div class="relative w-full overflow-hidden py-4 select-none" aria-label="Client Brand Logos">
+            <!-- Left & Right Gradient Fade Masks -->
+            <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#F5F1EA] to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#F5F1EA] to-transparent z-10 pointer-events-none"></div>
+
+            <div class="inline-flex logo-ticker-track items-center">
+              <!-- Set 1 -->
+              <div class="flex items-center space-x-6 sm:space-x-8 px-4">
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/brown-sugar-skin-logo.png" alt="Brown Sugar Skin" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">BROWN SUGAR SKIN</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/the-sculpted-spa-logo.png" alt="The Sculpted Spa" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">THE SCULPTED SPA</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/kay-skn-logo.png" alt="Kay Skn" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">KAY SKN</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/sbs-logo.png" alt="SBS Beauty" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">SBS BEAUTY</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/beyond-beauty-logo.png" alt="Beyond Beauty" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">BEYOND BEAUTY</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/laser-and-spa-logo.png" alt="Laser & Spa" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">LASER &AMP; SPA</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/r-method-logo.png" alt="R Method" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">R METHOD</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/solydified-logo.png" alt="Solydified" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">SOLYDIFIED</span>
+                </div>
+              </div>
+
+              <!-- Set 2 (Duplicate for continuous loop) -->
+              <div class="flex items-center space-x-6 sm:space-x-8 px-4" aria-hidden="true">
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/brown-sugar-skin-logo.png" alt="Brown Sugar Skin" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">BROWN SUGAR SKIN</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/the-sculpted-spa-logo.png" alt="The Sculpted Spa" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">THE SCULPTED SPA</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/kay-skn-logo.png" alt="Kay Skn" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">KAY SKN</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/sbs-logo.png" alt="SBS Beauty" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">SBS BEAUTY</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/beyond-beauty-logo.png" alt="Beyond Beauty" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">BEYOND BEAUTY</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/laser-and-spa-logo.png" alt="Laser & Spa" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">LASER &AMP; SPA</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/r-method-logo.png" alt="R Method" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">R METHOD</span>
+                </div>
+                <div class="group w-40 sm:w-48 h-24 flex flex-col items-center justify-center p-3 sm:p-4 bg-[#FAF8F5] border border-[#EAE4D9] hover:border-[#9E8063]/50 transition-all duration-300">
+                  <img src="assets/images/clients/solydified-logo.png" alt="Solydified" class="h-10 sm:h-12 w-auto object-contain filter grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300" />
+                  <span class="text-[9px] uppercase tracking-[0.15em] text-[#756A61] mt-2 text-center font-light line-clamp-1">SOLYDIFIED</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -2034,8 +2154,8 @@
                 <span class="w-8 h-[1px] bg-[#9E8063]"></span>
               </div>
               <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#1E1A17] leading-tight">
-                Let's elevate your brand <br />
-                <span class="italic font-normal font-serif text-[#7D644B]">to its next era.</span>
+                LET'S CREATE SOMETHING <br />
+                <span class="italic font-normal font-serif text-[#7D644B]">EXTRAORDINARY.</span>
               </h2>
               <p class="text-base text-[#544B44] font-light leading-relaxed">Whether you’re seeking comprehensive monthly management, a tailored photoshoot, or an elevated brand identity, we would love to learn more about your vision.</p>
             </div>

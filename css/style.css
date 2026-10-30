@@ -305,3 +305,124 @@ body.body-menu-locked {
   -webkit-overflow-scrolling: touch;
 }
 
+
+
+/* ==========================================================================
+   FRAMER-STYLE ANIMATIONS & CINEMATIC EFFECTS
+   (Popular Tasks, Animatory, TBD Studio, Thumbstop)
+   ========================================================================== */
+
+/* --- Word-by-Word Headline Reveal --- */
+.hero-word {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+  will-change: transform, opacity;
+}
+.site-loaded .hero-word {
+  transform: translateY(0);
+  opacity: 1;
+}
+.site-loaded .hero-word-1 { transition-delay: 0.15s; }
+.site-loaded .hero-word-2 { transition-delay: 0.23s; }
+.site-loaded .hero-word-3 { transition-delay: 0.31s; }
+.site-loaded .hero-word-4 { transition-delay: 0.39s; }
+.site-loaded .hero-word-5 { transition-delay: 0.47s; }
+.site-loaded .hero-word-6 { transition-delay: 0.55s; }
+
+/* --- Thumbstop Moving Text Ribbon --- */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 26s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* --- Client Logo Infinite Ticker --- */
+@keyframes logoTickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: logoTickerScroll 32s linear infinite;
+  will-change: transform;
+}
+.logo-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* --- Floating Video & Visual Cards --- */
+.parallax-layer {
+  transition: transform 0.18s cubic-bezier(0.2, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* --- Magnetic Button Interaction --- */
+.btn-magnetic {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+/* --- Branded Preloader --- */
+#site-loader {
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s;
+}
+#site-loader.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* --- Custom Cursor (Desktop Only) --- */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(158, 128, 99, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
+}
+#custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #9E8063;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.cursor-hover #custom-cursor {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(158, 128, 99, 0.12);
+  border-color: #9E8063;
+}
+
+@media (pointer: coarse) or (max-width: 1024px) {
+  #custom-cursor, #custom-cursor-dot {
+    display: none !important;
+  }
+}
+

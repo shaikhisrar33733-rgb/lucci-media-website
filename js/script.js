@@ -675,5 +675,138 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => el.classList.add('is-revealed'));
   }
 
+  
+  // --- 12. BRANDED PRELOADER ANIMATION (POPULAR TASKS & THUMBSTOP) ---
+  const siteLoader = document.getElementById('site-loader');
+  const loaderBar = document.getElementById('loader-progress-bar');
+  const loaderCounter = document.getElementById('loader-counter');
+
+  if (siteLoader && loaderBar && loaderCounter) {
+    let progress = 0;
+    const duration = 950; // fast luxury loading
+    const intervalTime = 20;
+    const step = 100 / (duration / intervalTime);
+
+    const loaderInterval = setInterval(() => {
+      progress += step;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(loaderInterval);
+        loaderBar.style.width = '100%';
+        loaderCounter.textContent = '100%';
+
+        setTimeout(() => {
+          siteLoader.classList.add('loader-hidden');
+          document.body.classList.add('site-loaded');
+        }, 220);
+      } else {
+        loaderBar.style.width = `${Math.floor(progress)}%`;
+        loaderCounter.textContent = `${Math.floor(progress)}%`;
+      }
+    }, intervalTime);
+  } else {
+    document.body.classList.add('site-loaded');
+  }
+
+  // --- 13. HERO FLOATING CARDS DESKTOP PARALLAX ---
+  const heroSec = document.getElementById('home');
+  const parallaxLayers = document.querySelectorAll('.parallax-layer');
+  if (window.innerWidth > 1024 && heroSec && parallaxLayers.length) {
+    heroSec.addEventListener('mousemove', (e) => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const deltaX = (e.clientX - centerX);
+      const deltaY = (e.clientY - centerY);
+
+      parallaxLayers.forEach(layer => {
+        const factor = parseFloat(layer.getAttribute('data-parallax') || '0.04');
+        const moveX = deltaX * factor;
+        const moveY = deltaY * factor;
+        layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+      });
+    }, { passive: true });
+
+    heroSec.addEventListener('mouseleave', () => {
+      parallaxLayers.forEach(layer => {
+        layer.style.transform = 'translate3d(0, 0, 0)';
+      });
+    });
+  }
+
+  // --- 14. DESKTOP MAGNETIC BUTTON INTERACTION ---
+  if (window.innerWidth > 1024) {
+    document.querySelectorAll('.btn-magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+      }, { passive: true });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  // --- 15. LUXURY DESKTOP CUSTOM CURSOR ---
+  const customCursor = document.getElementById('custom-cursor');
+  const customCursorDot = document.getElementById('custom-cursor-dot');
+  if (customCursor && customCursorDot && window.innerWidth > 1024 && !window.matchMedia('(pointer: coarse)').matches) {
+    let mouseX = -100, mouseY = -100;
+    let cursorX = -100, cursorY = -100;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      customCursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    }, { passive: true });
+
+    function renderCursorFollower() {
+      cursorX += (mouseX - cursorX) * 0.18;
+      cursorY += (mouseY - cursorY) * 0.18;
+      customCursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+      requestAnimationFrame(renderCursorFollower);
+    }
+    requestAnimationFrame(renderCursorFollower);
+
+    // Hover expand state over interactive links and cards
+    document.querySelectorAll('a, button, [data-portfolio-item], .service-card, .faq-question-btn').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+  }
+
+  // --- 16. ANIMATED NUMBER COUNTERS FOR REAL METRICS ---
+  const counterEls = document.querySelectorAll('[data-counter-target]');
+  if ('IntersectionObserver' in window && counterEls.length) {
+    const counterObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-counter-target'), 10);
+          if (!isNaN(target)) {
+            const raw = el.textContent.trim();
+            const suffix = raw.replace(/[0-9]/g, '');
+            let count = 0;
+            const duration = 1200;
+            const step = Math.max(1, Math.ceil(target / (duration / 20)));
+            const timer = setInterval(() => {
+              count += step;
+              if (count >= target) {
+                count = target;
+                clearInterval(timer);
+              }
+              el.textContent = `${count}${suffix}`;
+            }, 20);
+          }
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    counterEls.forEach(el => counterObserver.observe(el));
+  }
+
   console.log('LUCCI MEDIA pure static JavaScript engine initialized successfully.');
 });
