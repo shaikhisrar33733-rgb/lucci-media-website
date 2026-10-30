@@ -3217,3 +3217,14 @@ body.body-menu-locked {
     max-width: 535px !important;
   }
 }
+
+/* ==========================================================================
+   ABOUT SECTION - EDITORIAL LEFT IMAGES SIZING
+   Increase left-side images by ~12-13% while preserving exact aspect ratios
+   ========================================================================== */
+@media (min-width: 1024px) {
+  #about .about-imagery-container {
+    width: 112% !important;
+    max-width: 535px !important;
+  }
+}
