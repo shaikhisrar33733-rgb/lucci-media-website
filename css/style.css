@@ -292,3 +292,16 @@ body.body-menu-locked {
   }
 }
 
+
+
+/* Mobile Navigation Drawer Positioning & Scroll Bounds */
+#mobile-menu {
+  position: absolute;
+  top: 100% !important;
+  left: 0;
+  right: 0;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
