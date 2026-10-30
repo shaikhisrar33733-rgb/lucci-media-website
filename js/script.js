@@ -131,6 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const plusIcon = card.querySelector('.service-plus-icon');
     const minusIcon = card.querySelector('.service-minus-icon');
 
+    const toggleText = card.querySelector('.service-toggle-text');
+
     if (toggleHeader && drawer) {
       toggleHeader.addEventListener('click', () => {
         const isExpanded = !drawer.classList.contains('hidden');
@@ -140,9 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const d = c.querySelector('.service-drawer');
           const p = c.querySelector('.service-plus-icon');
           const m = c.querySelector('.service-minus-icon');
+          const t = c.querySelector('.service-toggle-text');
           if (d) d.classList.add('hidden');
           if (p) p.classList.remove('hidden');
           if (m) m.classList.add('hidden');
+          if (t) t.textContent = 'EXPLORE SCOPE';
           c.classList.remove('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-lg');
           c.classList.add('bg-[#FAF8F5]', 'border-[#EAE4D9]');
         });
@@ -152,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
           drawer.classList.remove('hidden');
           if (plusIcon) plusIcon.classList.add('hidden');
           if (minusIcon) minusIcon.classList.remove('hidden');
+          if (toggleText) toggleText.textContent = 'CLOSE SCOPE';
           card.classList.add('bg-[#FFFFFF]', 'border-[#9E8063]/60', 'shadow-lg');
           card.classList.remove('bg-[#FAF8F5]', 'border-[#EAE4D9]');
         }

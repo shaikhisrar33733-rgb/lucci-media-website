@@ -457,34 +457,44 @@
         <button type="button" data-service-filter="strategy" class="service-filter-btn px-4 py-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] transition-all duration-300 bg-[#F5F1EA] text-[#544B44] hover:bg-[#EAE4D9] font-normal">STRATEGY &amp; CONSULTING</button>
       </div>
 
-      <!-- Services Accordion List -->
-      <div id="services-list" class="space-y-6">
-        <article data-service-category="management" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FFFFFF] border-[#9E8063]/60 shadow-lg">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">01</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">FULL SERVICE</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Social Media Management</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">Let us handle the day-to-day while you focus on scaling your business.</p>
-              </div>
+            <!-- Services Grid (Desktop 3 Cols, Tablet 2 Cols, Mobile 1 Col) -->
+      <div id="services-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+        <!-- Service Card 01 -->
+        <article data-service-category="management" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">01</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">FULL SERVICE</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Social Media Management</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">Let us handle the day-to-day while you focus on scaling your business.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">A comprehensive, end-to-end management experience tailored for beauty, wellness, and lifestyle brands seeking consistent, high-converting digital presence without the daily stress.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/brown-sugar-skin.webp" alt="Social Media Management" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 01</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">A comprehensive, end-to-end management experience tailored for beauty, wellness, and lifestyle brands seeking consistent, high-converting digital presence without the daily stress.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -515,56 +525,59 @@
                     </span>
                     <span>In-depth monthly analytics & performance growth reports</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Established brands wanting turnkey execution and sustained follower conversion.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Social Media Management" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Social Media Management</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/brown-sugar-skin.webp" alt="Social Media Management" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 01</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Established brands wanting turnkey execution and sustained follower conversion.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Social Media Management" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="production" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">02</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">PRODUCTION</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Content Creation / Content Days</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">Bring your brand to life with professional, high-impact visuals.</p>
-              </div>
+
+        <!-- Service Card 02 -->
+        <article data-service-category="production" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">02</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">PRODUCTION</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Content Creation / Content Days</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">Bring your brand to life with professional, high-impact visuals.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">An immersive, dedicated shooting session crafted to generate a curated library of high-resolution video and photo assets to keep your digital channels vibrant and engaging.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/product-content.webp" alt="Content Creation / Content Days" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 02</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">An immersive, dedicated shooting session crafted to generate a curated library of high-resolution video and photo assets to keep your digital channels vibrant and engaging.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -595,56 +608,59 @@
                     </span>
                     <span>Fully edited, color-graded delivery ready to post</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Brands needing months of fresh, aesthetic content in a single focused shoot.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Content Creation / Content Days" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Content Creation / Content Days</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/product-content.webp" alt="Content Creation / Content Days" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 02</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Brands needing months of fresh, aesthetic content in a single focused shoot.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Content Creation / Content Days" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="production" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">03</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">PRODUCTION</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Branding Shoots</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">Your brand deserves a bold, professional image that commands authority.</p>
-              </div>
+
+        <!-- Service Card 03 -->
+        <article data-service-category="production" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">03</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">PRODUCTION</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Branding Shoots</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">Your brand deserves a bold, professional image that commands authority.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">Art-directed photography sessions designed for personal branding, brand reinvention, or elevated executive imagery that establishes trust and distinction in your niche.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/founder-lex.webp" alt="Branding Shoots" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 03</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">Art-directed photography sessions designed for personal branding, brand reinvention, or elevated executive imagery that establishes trust and distinction in your niche.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -675,56 +691,59 @@
                     </span>
                     <span>Versatile crops for web hero banners, press, and social feeds</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Founders, beauty specialists, and aesthetic clinics ready to elevate their public profile.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Branding Shoots" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Branding Shoots</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/founder-lex.webp" alt="Branding Shoots" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 03</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Founders, beauty specialists, and aesthetic clinics ready to elevate their public profile.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Branding Shoots" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="strategy" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">04</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">STRATEGY</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Business Consulting</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">Personalized strategic guidance to accelerate your digital growth.</p>
-              </div>
+
+        <!-- Service Card 04 -->
+        <article data-service-category="strategy" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">04</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">STRATEGY</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Business Consulting</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">Personalized strategic guidance to accelerate your digital growth.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">One-on-one advisory sessions analyzing your brand positioning, sales funnels, and marketing touchpoints to eliminate bottlenecks and unlock high-ticket client acquisition.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/on-set.webp" alt="Business Consulting" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 04</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">One-on-one advisory sessions analyzing your brand positioning, sales funnels, and marketing touchpoints to eliminate bottlenecks and unlock high-ticket client acquisition.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -755,56 +774,59 @@
                     </span>
                     <span>Actionable step-by-step roadmap following the consultation</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Entrepreneurs looking for clear, expert direction before scaling.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Business Consulting" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Business Consulting</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/on-set.webp" alt="Business Consulting" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 04</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Entrepreneurs looking for clear, expert direction before scaling.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Business Consulting" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="design" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">05</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">DESIGN</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Website Design</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">Your digital storefront should be as stunning as your business.</p>
-              </div>
+
+        <!-- Service Card 05 -->
+        <article data-service-category="design" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">05</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">DESIGN</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Website Design</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">Your digital storefront should be as stunning as your business.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">Bespoke, conversion-focused websites engineered with editorial sophistication, intuitive navigation, and flawless responsiveness across all modern devices.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/editorial-6.jpg" alt="Website Design" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 05</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">Bespoke, conversion-focused websites engineered with editorial sophistication, intuitive navigation, and flawless responsiveness across all modern devices.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -835,56 +857,59 @@
                     </span>
                     <span>Includes collaborative 1-on-1 review sessions & revisions</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Brands ready for an editorial digital flagship that converts visitors into clientele.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Website Design" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Website Design</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/editorial-6.jpg" alt="Website Design" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 05</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Brands ready for an editorial digital flagship that converts visitors into clientele.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Website Design" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="design" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">06</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">DESIGN</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Graphic Design</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">Elevate your visual identity with custom designed brand collateral.</p>
-              </div>
+
+        <!-- Service Card 06 -->
+        <article data-service-category="design" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">06</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">DESIGN</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Graphic Design</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">Elevate your visual identity with custom designed brand collateral.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">From digital flyers to bespoke promotional materials, we craft cohesive graphics that echo your brand’s prestige across every customer touchpoint.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/behind-the-lens.webp" alt="Graphic Design" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 06</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">From digital flyers to bespoke promotional materials, we craft cohesive graphics that echo your brand’s prestige across every customer touchpoint.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -915,56 +940,59 @@
                     </span>
                     <span>High-resolution vector files and digital-ready formats</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Businesses launching events, new service menus, or refreshed marketing collateral.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Graphic Design" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Graphic Design</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/behind-the-lens.webp" alt="Graphic Design" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 06</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Businesses launching events, new service menus, or refreshed marketing collateral.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Graphic Design" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="production" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">07</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">PRODUCTION</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Campaign Shoots</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">Capture your brand’s overarching story with cinematic visuals that stand out.</p>
-              </div>
+
+        <!-- Service Card 07 -->
+        <article data-service-category="production" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">07</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">PRODUCTION</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Campaign Shoots</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">Capture your brand’s overarching story with cinematic visuals that stand out.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">High-concept creative productions engineered for seasonal campaigns, major product drops, and brand milestones that require full-scale storytelling and editorial grandeur.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/hero-campaign.webp" alt="Campaign Shoots" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 07</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">High-concept creative productions engineered for seasonal campaigns, major product drops, and brand milestones that require full-scale storytelling and editorial grandeur.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -995,56 +1023,59 @@
                     </span>
                     <span>Comprehensive asset pack tailored for multi-channel rollout</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Brands launching flagship products, seasonal lines, or high-profile campaigns.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Campaign Shoots" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Campaign Shoots</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/hero-campaign.webp" alt="Campaign Shoots" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 07</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Brands launching flagship products, seasonal lines, or high-profile campaigns.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Campaign Shoots" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="management" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">08</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">GROWTH</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Trending Socials Package</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">Stay ahead of the curve with viral-ready short-form video content.</p>
-              </div>
+
+        <!-- Service Card 08 -->
+        <article data-service-category="management" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">08</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">GROWTH</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Trending Socials Package</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">Stay ahead of the curve with viral-ready short-form video content.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">A focused, high-impact video package designed for businesses seeking to leverage current trends, viral audios, and algorithmic reach without the daily production headache.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/editorial-3.jpg" alt="Trending Socials Package" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 08</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">A focused, high-impact video package designed for businesses seeking to leverage current trends, viral audios, and algorithmic reach without the daily production headache.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -1075,56 +1106,59 @@
                     </span>
                     <span>Strategic recommendations on best posting times and engagement tactics</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Businesses aiming to accelerate reach on TikTok and Instagram Reels with zero stress.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Trending Socials Package" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Trending Socials Package</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/editorial-3.jpg" alt="Trending Socials Package" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 08</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Businesses aiming to accelerate reach on TikTok and Instagram Reels with zero stress.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Trending Socials Package" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="design" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">09</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">DESIGN</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Brand Kits</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">The essential foundation for a cohesive, unmistakable visual identity.</p>
-              </div>
+
+        <!-- Service Card 09 -->
+        <article data-service-category="design" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">09</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">DESIGN</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Brand Kits</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">The essential foundation for a cohesive, unmistakable visual identity.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">We develop cohesive visual design languages that ensure your brand looks instantly recognizable, polished, and unforgettable across digital and physical mediums.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/studio-story.webp" alt="Brand Kits" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 09</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">We develop cohesive visual design languages that ensure your brand looks instantly recognizable, polished, and unforgettable across digital and physical mediums.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -1155,56 +1189,59 @@
                     </span>
                     <span>Complete vector asset library for print and digital applications</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                New ventures launching or established businesses transitioning to luxury positioning.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Brand Kits" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Brand Kits</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/studio-story.webp" alt="Brand Kits" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 09</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              New ventures launching or established businesses transitioning to luxury positioning.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Brand Kits" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
-        <article data-service-category="strategy" class="reveal-on-scroll service-card border transition-all duration-500 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#DDD5C7]">
-          <div class="service-toggle cursor-pointer p-6 sm:p-8 flex items-center justify-between gap-4 select-none">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-              <span class="font-serif text-xl sm:text-2xl text-[#9E8063] font-light">10</span>
-              <div>
-                <div class="flex items-center space-x-3 mb-1">
-                  <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2 py-0.5">STRATEGY</span>
-                </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-[#1E1A17] font-light transition-colors">Content Strategy</h3>
-                <p class="text-xs sm:text-sm text-[#756A61] font-light mt-1 hidden sm:block">A clear, conversion-driven plan behind every piece of content you share.</p>
-              </div>
+
+        <!-- Service Card 10 -->
+        <article data-service-category="strategy" class="reveal-on-scroll service-card border transition-all duration-300 overflow-hidden bg-[#FAF8F5] border-[#EAE4D9] hover:border-[#9E8063]/60 flex flex-col h-full shadow-sm">
+          <div class="service-toggle cursor-pointer p-6 sm:p-7 flex flex-col justify-between select-none space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-serif text-2xl text-[#9E8063] font-light">10</span>
+              <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#756A61] bg-[#F5F1EA] px-2.5 py-1">STRATEGY</span>
             </div>
-            <div class="flex items-center space-x-3">
-              <div class="w-9 h-9 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] hover:bg-[#1E1A17] hover:text-[#FAF8F5] transition-all">
-                <svg class="service-minus-icon w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
-                <svg class="service-plus-icon w-4 h-4 " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+
+            <div>
+              <h3 class="font-serif text-2xl text-[#1E1A17] font-light leading-snug transition-colors">Content Strategy</h3>
+              <p class="text-xs text-[#756A61] font-light mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">A clear, conversion-driven plan behind every piece of content you share.</p>
+            </div>
+
+            <div class="pt-3 border-t border-[#EAE4D9]/80 flex items-center justify-between text-[#756A61]">
+              <span class="service-toggle-text text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9E8063]">EXPLORE SCOPE</span>
+              <div class="w-8 h-8 flex items-center justify-center border border-[#DDD5C7] rounded-full text-[#1E1A17] transition-all bg-[#FAF8F5]">
+                <svg class="service-plus-icon w-3.5 h-3.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                <svg class="service-minus-icon w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
               </div>
             </div>
           </div>
 
-          <div class="service-drawer px-6 pb-8 sm:px-8 sm:pb-8 pt-2 border-t border-[#F5F1EA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hidden">
-            <div class="lg:col-span-7 space-y-6">
-              <p class="text-sm sm:text-base text-[#544B44] font-light leading-relaxed">Eliminate guesswork and aimless posting. We engineer a bespoke strategic framework that aligns your content directly with your business revenue targets and brand elevation.</p>
-              <div class="space-y-3">
-                <p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Expandable Details Drawer -->
+          <div class="service-drawer hidden px-6 pb-7 pt-2 border-t border-[#EAE4D9] flex flex-col space-y-5 bg-[#FAF8F5]/90">
+            <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[16/10] shadow-sm">
+              <img src="assets/images/editorial-1.jpg" alt="Content Strategy" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
+              <div class="absolute bottom-2.5 left-2.5 bg-[#FAF8F5]/90 px-2.5 py-0.5 backdrop-blur-sm">
+                <span class="text-[8px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 10</span>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#544B44] font-light leading-relaxed">Eliminate guesswork and aimless posting. We engineer a bespoke strategic framework that aligns your content directly with your business revenue targets and brand elevation.</p>
+
+            <div class="space-y-2.5">
+              <p class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#1E1A17]">WHAT IS INCLUDED IN THIS SERVICE:</p>
+              <ul class="space-y-2">
                   <li class="flex items-start space-x-2.5 text-xs text-[#544B44] font-light">
                     <span class="w-4 h-4 mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full bg-[#F5F1EA] text-[#9E8063]">
                       <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -1235,27 +1272,19 @@
                     </span>
                     <span>Growth recommendations and measurable conversion action steps</span>
                   </li>
-                </ul>
-              </div>
-              <div class="p-3 bg-[#FAF8F5] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
-                <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
-                Founders with in-house teams who need elite strategic direction and content roadmaps.
-              </div>
-              <div class="pt-2">
-                <button type="button" data-inquire-service="Content Strategy" class="inquire-service-btn group inline-flex items-center space-x-2 px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
-                  <span>INQUIRE ABOUT Content Strategy</span>
-                  <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </button>
-              </div>
+              </ul>
             </div>
 
-            <div class="lg:col-span-5">
-              <div class="relative overflow-hidden bg-[#FAF8F5] border border-[#EAE4D9] aspect-[4/3] sm:aspect-[16/10] shadow-md">
-                <img src="assets/images/editorial-1.jpg" alt="Content Strategy" class="w-full h-full object-cover editorial-img-zoom" loading="lazy" />
-                <div class="absolute bottom-3 left-3 bg-[#FAF8F5]/90 px-3 py-1 backdrop-blur-sm">
-                  <span class="text-[9px] uppercase tracking-[0.2em] text-[#1E1A17] font-semibold">LUCCI MEDIA · 10</span>
-                </div>
-              </div>
+            <div class="p-3 bg-[#F5F1EA] border-l-2 border-[#9E8063] text-xs text-[#756A61] font-light">
+              <span class="font-semibold uppercase tracking-wider text-[#1E1A17] block mb-0.5">BEST SUITED FOR:</span>
+              Founders with in-house teams who need elite strategic direction and content roadmaps.
+            </div>
+
+            <div class="pt-2">
+              <button type="button" data-inquire-service="Content Strategy" class="inquire-service-btn btn-luxury w-full group inline-flex items-center justify-center space-x-2 py-3 px-4 text-[10px] uppercase tracking-[0.2em] font-semibold bg-[#1E1A17] text-[#FAF8F5] hover:bg-[#3D3631] transition-all">
+                <span>INQUIRE ABOUT THIS SERVICE</span>
+                <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </button>
             </div>
           </div>
         </article>
